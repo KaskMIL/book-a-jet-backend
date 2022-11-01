@@ -54,3 +54,5 @@ group :development do
 end
 
 gem 'jwt', '~> 2.5'
+
+gem 'rspec-rails', '~> 6.0', groups: %i[development test]
