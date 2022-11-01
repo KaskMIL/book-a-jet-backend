@@ -1,5 +1,5 @@
 class Jet < ApplicationRecord
-  has_many :reservations
+  has_many :reservations, dependent: :delete_all
   has_many :users, through: :reservations
 
   validates :name, :description, :size, :category, :image, presence: true

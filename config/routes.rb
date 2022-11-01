@@ -26,9 +26,9 @@ Rails.application.routes.draw do
       delete '/del_reservation', to: 'reservations#destroy'
 
       #For jets CRUD
-      post '/add_jet', to: 'jets#create'
-      delete '/del_jet', to: 'jets#destroy'
-      patch '/update_jet', to: 'jets#update'
+      post '/add-jet', to: 'jets#create'
+      delete '/delete-jet', to: 'jets#destroy'
+      patch '/update-jet', to: 'jets#update'
       get '/jets', to: 'jets#index'
       get '/jets/:id', to: 'jets#show'
      #show authorizeduser info
