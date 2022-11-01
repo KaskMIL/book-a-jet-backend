@@ -6,7 +6,7 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render json: { token: @token, name: @user.name, email: @user.email, id: @user.id, photo: @user.photo },
              status: :ok
     else
-      render json: { errors: 'Something is wrong, User registration failed' }, status: :unprocessable_entity
+      render json: { errors: 'User registration failed' }, status: :unprocessable_entity
     end
   end
 
