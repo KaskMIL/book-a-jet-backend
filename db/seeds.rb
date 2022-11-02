@@ -11,6 +11,7 @@ p "Seed started"
 
 p "Creating jets"
 require File.expand_path('db/seeds/seeds_jets', Rails.root)
+require File.expand_path('db/seeds/seeds_users', Rails.root)
 
 p "---------------------"
 
