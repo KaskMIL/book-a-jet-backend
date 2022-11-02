@@ -2,7 +2,7 @@ class Api::V1::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by(username: login_params[:username])
     if @user&.valid_password?(login_params[:password])
-      @token = issue_token(@user)
+      @token = @user.issue_token
       render json: { token: @token, username: @user.username,
                      name: @user.name, user_role: @user.role, email: @user.email },
              status: :ok
