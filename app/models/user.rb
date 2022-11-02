@@ -7,4 +7,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :username, presence: true, length: { maximum: 50 }, uniqueness: true
+
+  def issue_token
+    JWT.encode({ id:, exp: 60.days.from_now.to_i }, Rails.application.secrets.secret_key_base)
+  end
 end
