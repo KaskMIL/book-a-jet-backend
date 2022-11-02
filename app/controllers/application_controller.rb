@@ -8,14 +8,7 @@ class ApplicationController < ActionController::API
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name,:username, :email, :password) }
   end
 
-
-  rescue_from ActiveRecord::RecordNotFound do
-  render json: { error: 'Resource not found!' }, status: :not_found
-  end
-
-  rescue_from ActionController::RoutingError do
-    render json: { error: 'bad route' }, status: :not_found
-  end
+ private
 
   def secret_key
     Rails.application.secrets.secret_key_base
@@ -24,6 +17,9 @@ class ApplicationController < ActionController::API
   def token
     request.headers['Authorization'].split[1]
   end
+
+
+  
 
   def decoded_token
     JWT.decode(token, secret_key)[0]
@@ -40,4 +36,11 @@ class ApplicationController < ActionController::API
   def logged_in?
     current_user.present?
   end
+  rescue_from ActiveRecord::RecordNotFound do
+    render json: { error: 'Resource not found!' }, status: :not_found
+    end
+  
+    rescue_from ActionController::RoutingError do
+      render json: { error: 'bad route' }, status: :not_found
+    end
 end

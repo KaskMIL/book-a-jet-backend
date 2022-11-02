@@ -1,5 +1,3 @@
-require 'faker'
-
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -13,6 +11,7 @@ p "Seed started"
 
 p "Creating jets"
 require File.expand_path('db/seeds/seeds_jets', Rails.root)
+require File.expand_path('db/seeds/seeds_users', Rails.root)
 
 p "---------------------"
 
