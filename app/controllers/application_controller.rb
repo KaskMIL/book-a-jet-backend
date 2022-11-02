@@ -1,5 +1,3 @@
-require 'jwt'
-
 class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound do
     render json: { error: 'Resource not found!' }, status: :not_found
@@ -17,9 +15,9 @@ class ApplicationController < ActionController::API
     request.headers['Authorization'].split[1]
   end
 
-  def issue_token(user)
-    JWT.encode({ user_id: user.id, exp: 60.days.from_now.to_i }, Rails.application.secrets.secret_key_base)
-  end
+  # def issue_token(user)
+  #   JWT.encode({ user_id: user.id, exp: 60.days.from_now.to_i }, Rails.application.secrets.secret_key_base)
+  # end
 
   def decoded_token
     JWT.decode(token, secret_key)[0]
